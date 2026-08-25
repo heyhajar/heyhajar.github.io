@@ -1,4 +1,4 @@
-]<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -15,8 +15,6 @@
             --light-blue: #38b6ff;
             --brown: #5c3a21;
             --text-dark: #2b1e1a;
-            --board-frame: #3d2314;
-            --board-bg: #1e3023;
             --glow: rgba(255, 215, 0, 0.4);
         }
 
@@ -28,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--maroon-dark), var(--purple), var(--brown));
+            background: linear-gradient(135deg, var(--maroon-dark) 0%, var(--light-blue) 10%, var(--purple) 50%, var(--brown) 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -50,47 +48,20 @@
             backdrop-filter: blur(5px);
         }
 
-        .board-container {
-            background: var(--board-bg);
-            border: 8px solid var(--board-frame);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
-            min-height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .board-text {
-            color: #ffffff;
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1.45;
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-            border-right: 3px solid #fff;
-            animation: blinkCursor 0.75s step-end infinite;
-            text-shadow: 0 0 5px rgba(255,255,255,0.4);
-        }
-
-         .mascot-stage {
+        .mascot-stage {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 15px;
-            min-height: 250px;
+            min-height: 260px;
             justify-content: center;
             position: relative;
             width: 100%;
         }
 
         .mascot-avatar-container {
-            width: 180px;
-            height: 180px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--purple-light), var(--light-blue));
             border: 4px solid var(--maroon);
@@ -100,6 +71,7 @@
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 20px var(--glow);
             overflow: hidden;
             position: absolute;
+            top: 10px;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -117,7 +89,7 @@
         .chihuahua-writing-active {
             display: flex !important;
             opacity: 1;
-            animation: writingPacing 4s ease-in-out infinite alternate, floatBounce 2.5s ease-in-out infinite;
+            animation: writingPacing 4s ease-in-out infinite alternate, floatBounce 3s ease-in-out infinite;
         }
 
         .chihuahua-smirking-active {
@@ -139,7 +111,7 @@
             border: 3px solid var(--purple);
             border-radius: 20px;
             padding: 16px 22px;
-            margin-top: 200px;
+            margin-top: 195px;
             width: 90%;
             text-align: center;
             font-size: 1.1rem;
@@ -148,6 +120,11 @@
             box-shadow: 0 6px 18px rgba(0,0,0,0.15);
             animation: bubblePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 10;
+            min-height: 60px;
+            word-spacing: 2px;
+            line-height: 1.5;
+            white-space: normal;
+            unicode-bidi: plaintext;
         }
 
         .speech-bubble::after {
@@ -159,6 +136,54 @@
             border-width: 0 14px 14px 14px;
             border-style: solid;
             border-color: transparent transparent var(--purple) transparent;
+        }
+
+        /* Math Formula Renderer */
+        .math-formula {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            vertical-align: middle;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.25rem;
+            color: #000;
+        }
+
+        .lim-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 0.9;
+            margin-right: 6px;
+            font-weight: bold;
+        }
+
+        .lim-sub {
+            font-size: 0.65em;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            padding: 0 4px;
+        }
+
+        .numerator {
+            border-bottom: 2px solid var(--purple);
+            padding: 0 6px 2px 6px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .denominator {
+            padding-top: 2px;
+            font-weight: bold;
+            font-style: italic;
         }
 
         .card-content {
@@ -188,6 +213,7 @@
             cursor: pointer;
             transition: all 0.25s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            word-spacing: 1px;
         }
 
         .btn-option:hover {
@@ -217,12 +243,15 @@
             font-weight: bold;
             margin-bottom: 6px;
             letter-spacing: 1px;
+            word-spacing: 1px;
         }
 
         .real-answer-text {
             font-size: 1.15rem;
             color: var(--maroon);
             font-weight: 700;
+            word-spacing: 2px;
+            unicode-bidi: plaintext;
         }
 
         .nav-controls {
@@ -243,6 +272,7 @@
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s, background 0.2s;
+            word-spacing: 1px;
         }
 
         .btn-prev:hover {
@@ -261,6 +291,7 @@
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(56, 182, 255, 0.4);
             transition: transform 0.2s, background 0.2s;
+            word-spacing: 1px;
         }
 
         .btn-next:hover {
@@ -282,38 +313,34 @@
             border: 4px solid var(--maroon);
         }
 
+        /* Reduced bouncing so mascot stays within div bounds */
         @keyframes writingPacing {
-            0% { transform: translateX(-40px) rotate(-3deg); }
-            50% { transform: translateX(40px) rotate(3deg); }
-            100% { transform: translateX(-40px) rotate(-3deg); }
+            0% { transform: translateX(-30px) rotate(-2deg); }
+            50% { transform: translateX(30px) rotate(2deg); }
+            100% { transform: translateX(-30px) rotate(-2deg); }
         }
 
         @keyframes floatBounce {
-            0%, 100% { translateY: 0px; }
-            50% { translateY: -12px; }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
         }
 
         @keyframes smirkSlideIn {
-            0% { transform: translateY(60px) scale(0.5) rotate(-15deg); opacity: 0; }
-            100% { transform: translateY(0) scale(1.1) rotate(0deg); opacity: 1; }
+            0% { transform: translateY(30px) scale(0.6) rotate(-10deg); opacity: 0; }
+            100% { transform: translateY(0) scale(1.0) rotate(0deg); opacity: 1; }
         }
 
         @keyframes victoryWiggle {
-            0% { transform: scale(1.1) rotate(0deg); }
-            25% { transform: scale(1.15) rotate(-6deg) translateY(-5px); }
-            50% { transform: scale(1.1) rotate(6deg) translateY(0px); }
-            75% { transform: scale(1.15) rotate(-4deg) translateY(-3px); }
-            100% { transform: scale(1.1) rotate(0deg); }
+            0% { transform: scale(1.0) rotate(0deg); }
+            25% { transform: scale(1.03) rotate(-3deg) translateY(-2px); }
+            50% { transform: scale(1.0) rotate(3deg) translateY(0px); }
+            75% { transform: scale(1.03) rotate(-2deg) translateY(-1px); }
+            100% { transform: scale(1.0) rotate(0deg); }
         }
 
         @keyframes bubblePop {
             0% { opacity: 0; transform: scale(0.7) translateY(10px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        @keyframes blinkCursor {
-            from, to { border-color: transparent }
-            50% { border-color: white; }
         }
 
         @keyframes popIn {
@@ -344,10 +371,6 @@
     <audio id="birthday-audio" src="happybirthday.mp3" preload="auto"></audio>
 
     <div class="container">
-        <div class="board-container">
-            <div class="board-text" id="board-question"></div>
-        </div>
-
        <div class="mascot-stage">
             <div class="mascot-avatar-container chihuahua-writing-active" id="chihuahua-writing-box">
                 <img src="https://media1.tenor.com/m/soE-J4962oMAAAAd/chakopen-pooomama.gif" alt="Chihuahua writing" draggable="false">
@@ -357,15 +380,15 @@
                 <img src="https://media1.tenor.com/m/otkJ5i7S_agAAAAd/dog-smile.gif" alt="Chihuahua smirking" draggable="false">
             </div>
 
-            <div class="speech-bubble" id="chihuahua-dialogue" style="display: none;"></div>
+            <div class="speech-bubble" id="chihuahua-dialogue" dir="auto"></div>
         </div>
 
         <div id="quiz-card" class="card-content">
             <div class="options-grid" id="options-container"></div>
 
             <div class="real-answer-box" id="real-answer-container">
-                <div class="real-answer-title">L'Jawab L'Haqiqi (The Real Answer):</div>
-                <div class="real-answer-text" id="real-answer-text"></div>
+                <div class="real-answer-title">L'Jawab L'Haqiqi:</div>
+                <div class="real-answer-text" id="real-answer-text" dir="auto"></div>
             </div>
 
             <div class="nav-controls">
@@ -389,55 +412,47 @@
             {
                 question: "heyy l3mar, since wliti officiellement db tal3a f 30, تتقدَّم المندوبية السامية للعطاويين bach anaha dirlk had test wtchoufek wach tzidk m3ahoum wla nsiftouk diri swaye3 3nd si sirajdin, so game on?",
                 options: ["A) \"yes\"", "B) \"yes\""],
-                chihuahuaComment: "Yallah bda w wrina chno 3ndk...",
                 realAnswer: "Mzyan, ma3ndk fin thrbi hhhh! Game ON!"
             },
             {
                 question: "FIRST QUESTION, what attracts more?",
                 options: ["A) magnet", "B) black hole"],
-                chihuahuaComment: "Mmm, blati nchoufo hhhhh",
                 realAnswer: "3inik a zin, a7em sf man3awdch and5l flm39oul"
             },
             {
                 question: "What gets worse when you don’t use it?",
                 options: ["A) Your muscles", "B) Your memory"],
-                chihuahuaComment: "Fkkr mzyan wla gha khtar",
                 realAnswer: "Common sense."
             },
             {
                 question: "Solve the following limit:",
+                formulaHtml: `<div class="math-formula"><span class="lim-group">lim<sub class="lim-sub">n → ∞</sub></span><span class="fraction"><span class="numerator">π(n) ln n</span><span class="denominator">n</span></span></div>`,
                 options: ["A) \"n\"", "B) \"1\""],
-                chihuahuaComment: "Maths genius dik s3a...",
                 realAnswer: "umm actuanny mzl mal9a taw7ed l7al liha, wlkn anyways, ILLI BA3DO"
             },
             {
                 question: "What comes down but never goes up?",
                 options: ["A) Rain", "B) Someone falling"],
-                chihuahuaComment: "Sahl had l'sowal wla la?",
                 realAnswer: "Your age."
             },
             {
                 question: "What is something you can put between two people that makes them closer?",
                 options: ["A) A relationship", "B) A secret"],
-                chihuahuaComment: "Aji nchoufo l'falsafa dialk...",
                 realAnswer: "The letter “O.” Because putting O between “tw” and “people” doesn’t— nvm 3gzt nchra7."
             },
             {
                 question: "What can you get but can’t give?",
                 options: ["A) A disease", "B) An attitude"],
-                chihuahuaComment: "Hadi bayna wla 3awtn?",
                 realAnswer: "Older. 5lina ntfafhmo l3ssa mn ba3d... welp"
             },
             {
                 question: "What is something you might find in a museum?",
                 options: ["A) A dinosaur", "B) An ancient artifact"],
-                chihuahuaComment: "Nchoufo thqafa l'3ama...",
                 realAnswer: "Your birth certificate. kidayra lbs :)"
             },
             {
                 question: "What do you use to think?",
                 options: ["A) Your brain", "B) Your heart"],
-                chihuahuaComment: "Akhir sowal, rakzi mzyan!",
                 realAnswer: "Your ass, apparently. 3la had l ajwiba zinin li 5tariti daba"
             }
         ];
@@ -445,7 +460,6 @@
         let currentStep = 0;
         let typeWriterInterval = null;
 
-        const boardQuestion = document.getElementById('board-question');
         const boxWriting = document.getElementById('chihuahua-writing-box');
         const boxSmirking = document.getElementById('chihuahua-smirking-box');
         const dialogueEl = document.getElementById('chihuahua-dialogue');
@@ -455,17 +469,20 @@
         const btnPrev = document.getElementById('btn-prev');
         const btnNext = document.getElementById('btn-next');
 
-        function typeTextOnBoard(text, speed = 35) {
+        function typeTextOnDialogue(text, formulaHtml = '', speed = 35) {
             clearInterval(typeWriterInterval);
-            boardQuestion.innerText = '';
+            dialogueEl.innerHTML = '';
             let index = 0;
 
             typeWriterInterval = setInterval(() => {
                 if (index < text.length) {
-                    boardQuestion.innerText += text.charAt(index);
+                    dialogueEl.textContent += text.charAt(index);
                     index++;
                 } else {
                     clearInterval(typeWriterInterval);
+                    if (formulaHtml) {
+                        dialogueEl.innerHTML = dialogueEl.textContent + ' ' + formulaHtml;
+                    }
                 }
             }, speed);
         }
@@ -476,9 +493,9 @@
             boxSmirking.className = "mascot-avatar-container chihuahua-hidden";
             boxWriting.className = "mascot-avatar-container chihuahua-writing-active";
 
-            typeTextOnBoard(current.question);
+            dialogueEl.style.display = 'block';
+            typeTextOnDialogue(current.question, current.formulaHtml || '');
 
-            dialogueEl.style.display = 'none';
             realAnswerBox.style.display = 'none';
 
             optionsEl.style.display = 'grid';
@@ -489,7 +506,7 @@
             current.options.forEach((optText, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'btn-option';
-                btn.innerText = optText;
+                btn.textContent = optText;
                 btn.onclick = () => handleAnswer(idx);
                 optionsEl.appendChild(btn);
             });
@@ -503,10 +520,7 @@
             boxWriting.className = "mascot-avatar-container chihuahua-hidden";
             boxSmirking.className = "mascot-avatar-container chihuahua-smirking-active";
 
-            dialogueEl.innerText = current.chihuahuaComment;
-            dialogueEl.style.display = 'block';
-
-            realAnswerText.innerText = current.realAnswer;
+            realAnswerText.textContent = current.realAnswer;
 
             optionsEl.style.display = 'none';
             realAnswerBox.style.display = 'block';
@@ -542,8 +556,7 @@
             document.getElementById('quiz-card').style.display = 'none';
             document.getElementById('certificate-screen').style.display = 'block';
             
-            boardQuestion.innerText = "TEST COMPLETED!";
-            dialogueEl.innerText = "MABROUK 30 YEARS! HAHAHA!";
+            dialogueEl.textContent = "TEST COMPLETED!\nMABROUK 30 YEARS! HAHAHA!";
             dialogueEl.style.display = 'block';
 
             playBirthdaySound();
