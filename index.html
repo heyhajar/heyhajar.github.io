@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+]<!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -103,9 +103,10 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .mascot-avatar-container img {
+        .mascot-avatar-container .tenor-gif-embed {
             width: 100%;
             height: 100%;
+            transform: scale(1.1); 
             object-fit: cover;
         }
 
@@ -336,29 +337,25 @@
 
     <canvas id="confetti-canvas"></canvas>
 
-    <!-- External Happy Birthday Sound File -->
     <audio id="birthday-audio" src="happybirthday.mp3" preload="auto"></audio>
 
     <div class="container">
-        <!-- Question Board -->
         <div class="board-container">
             <div class="board-text" id="board-question"></div>
         </div>
 
-        <!-- Animated Mascot Stage -->
         <div class="mascot-stage">
             <div class="mascot-avatar-container chihuahua-writing-active" id="chihuahua-writing-box">
-                <img id="img-writing" src="chihuahua1.gif" alt="Writing Chihuahua">
+                <div class="tenor-gif-embed" data-postid="12862630350378687107" data-share-method="host" data-aspect-ratio="0.863454" data-width="100%"><a href="https://tenor.com/view/chakopen-pooomama-poomama-chihuahua-smiling-chihuahua-gif-12862630350378687107">Chakopen Pooomama GIF</a>from <a href="https://tenor.com/search/chakopen-gifs">Chakopen GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
             </div>
 
             <div class="mascot-avatar-container chihuahua-hidden" id="chihuahua-smirking-box">
-                <img id="img-smirking" src="chihuahua2.gif" alt="Smirking Chihuahua">
+                <div class="tenor-gif-embed" data-postid="11734421188323245480" data-share-method="host" data-aspect-ratio="0.93125" data-width="100%"><a href="https://tenor.com/view/dog-smile-chihauhaua-chihauha-chihauhau-gif-11734421188323245480">Dog Smile GIF</a>from <a href="https://tenor.com/search/dog-gifs">Dog GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
             </div>
 
             <div class="speech-bubble" id="chihuahua-dialogue" style="display: none;"></div>
         </div>
 
-        <!-- Quiz Controls -->
         <div id="quiz-card" class="card-content">
             <div class="options-grid" id="options-container"></div>
 
@@ -373,7 +370,6 @@
             </div>
         </div>
 
-        <!-- Certificate Screen -->
         <div class="certificate-container" id="certificate-screen">
             <img class="cert-img-display" src="certificate.png" alt="Official Certificate">
             
@@ -476,9 +472,6 @@
             boxSmirking.className = "mascot-avatar-container chihuahua-hidden";
             boxWriting.className = "mascot-avatar-container chihuahua-writing-active";
 
-            const imgWriting = document.getElementById('img-writing');
-            imgWriting.src = imgWriting.src.split('?')[0] + '?t=' + new Date().getTime();
-
             typeTextOnBoard(current.question);
 
             dialogueEl.style.display = 'none';
@@ -505,9 +498,6 @@
 
             boxWriting.className = "mascot-avatar-container chihuahua-hidden";
             boxSmirking.className = "mascot-avatar-container chihuahua-smirking-active";
-
-            const imgSmirking = document.getElementById('img-smirking');
-            imgSmirking.src = imgSmirking.src.split('?')[0] + '?t=' + new Date().getTime();
 
             dialogueEl.innerText = current.chihuahuaComment;
             dialogueEl.style.display = 'block';
@@ -564,7 +554,6 @@
             renderStep();
         }
 
-        // Play local audio file
         function playBirthdaySound() {
             const bdayAudio = document.getElementById('birthday-audio');
             if (bdayAudio) {
@@ -583,7 +572,6 @@
             }
         }
 
-        // Web Audio Synthesizer for option click smirk sound
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
         function playSmirkSound() {
@@ -601,7 +589,6 @@
             osc.stop(audioCtx.currentTime + 0.15);
         }
 
-        // Confetti Effect
         function startConfetti() {
             const canvas = document.getElementById('confetti-canvas');
             const ctx = canvas.getContext('2d');
@@ -631,7 +618,6 @@
             animate();
         }
 
-        // Initialize First Step
         renderStep();
     </script>
 </body>
